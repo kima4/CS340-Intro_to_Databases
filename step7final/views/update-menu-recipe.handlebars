@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <h1>Menus to Recipes Junction</h1>
+        <br/>
+        <h3>Update a menu-recipe relationship:</h3>
+        <fieldset>
+            <legend>Menu Recipe</legend>
+            <form id="update-menu-recipe" action="/menu-recipes" method="put">
+                Recipe Number: <input type="number" name="recipe_number" value="{{menu_recipe.recipe_number}}"><br><br>
+                <button onclick="updateMenuRecipe({{menu_recipe.menu_recipe_id}})">Update</button>
+            </form>
+        </fieldset>
+    </body>
+</html>

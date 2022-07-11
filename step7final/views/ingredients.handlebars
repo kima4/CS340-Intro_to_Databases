@@ -1,0 +1,47 @@
+<html>
+    <h1>Ingredients</h1>
+    <br/>
+    <h3>Add an ingredient:</h3>
+    <fieldset>
+        <legend>Ingredient Details</legend>
+        <form id="addingredient" action="/ingredients" method="post">
+            Ingredient Name: <input type="text" name="ingredient_name"><br>
+            Ingredient Category: <input type="text" name="ingredient_category"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </fieldset>
+    <h3>Search for an ingredient:</h3>
+    <fieldset>
+        <legend>Ingredient Search</legend>
+        <form id="search_ingredients" action="" method="">
+            <label> Search for an ingredient: </label>
+            <input id='ingredient_name_search_string' type='text' name='ingredient_name_search_string' value='' placeholder="Ingredient Name"><br>
+            <input type="button" value="Search" onclick="searchIngredientsByIngredientName()">
+        </form>
+    </fieldset>
+    <br/>
+
+    <h3>Current Ingredients:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Ingredient ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each ingredients}}
+            <tr>
+                <td>{{ingredient_id}}</td>
+                <td>{{ingredient_name}}</td>
+                <td>{{ingredient_category}}</td>
+                <td><button onclick="deleteIngredient({{ingredient_id}})">Delete</button></td>
+                <td><a href="/ingredients/{{ingredient_id}}">Update</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</html>

@@ -1,0 +1,49 @@
+<html>
+    <h1>Menus to Recipes Junction</h1>
+    <br/>
+    <h3>Add a recipe to a menu:</h3>
+    <fieldset>
+        <legend>Menu Recipe</legend>
+        <form id="addmenurecipe" action="/menu-recipes" method="post">
+            Menu Name: <select name="menu_id">
+                {{#each menus}}
+                <option value="{{menu_id}}">{{menu_name}}</option>
+                {{/each}}
+            </select><br>
+            Recipe Name: <select name="recipe_id">
+                {{#each recipes}}
+                <option value="{{recipe_id}}">{{recipe_name}}</option>
+                {{/each}}
+            </select><br>
+            Recipe Number: <input type="number" name="recipe_number"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </fieldset>
+    <br/>
+
+    <h3>Current recipes in menus:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Menu</th>
+                <th>Recipe</th>
+                <th>Recipe Number</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each menurecipes}}
+            <tr>
+                <td>{{menu_recipe_id}}</td>
+                <td>{{menu_name}}</td>
+                <td>{{recipe_name}}</td>
+                <td>{{recipe_number}}</td>
+                <td><button onclick="deleteMenuRecipe({{menu_recipe_id}})">Delete</button></td>
+                <td><a href="/menu-recipes/{{menu_recipe_id}}">Update</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</html>

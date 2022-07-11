@@ -1,0 +1,52 @@
+<html>
+    <h1>Recipes to Users Junction</h1>
+    <br/>
+    <h3>Add a recipe review from a user:</h3>
+    <fieldset>
+        <legend>Recipe User</legend>
+        <form id="addrecipeuser" action="/recipe-users" method="post">
+            Recipe Name: <select name="recipe_id">
+                {{#each recipes}}
+                <option value="{{recipe_id}}">{{recipe_name}}</option>
+                {{/each}}
+            </select><br>
+            Username: <select name="username">
+                {{#each users}}
+                <option value="{{username}}">{{username}}</option>
+                {{/each}}
+            </select><br>
+            Rating: <input type="number" name="recipe_user_rating"><br>
+            Comment: <input type="text" name="recipe_user_comment"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </fieldset>
+    <br/>
+
+    <h3>Current recipe reviews by users:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Recipe</th>
+                <th>User</th>
+                <th>Rating</th>
+                <th>Comments</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each recipeusers}}
+            <tr>
+                <td>{{recipe_user_id}}</td>
+                <td>{{recipe_name}}</td>
+                <td>{{username}}</td>
+                <td>{{recipe_user_rating}}</td>
+                <td>{{recipe_user_comment}}</td>
+                <td><button onclick="deleteRecipeUser({{recipe_user_id}})">Delete</button></td>
+                <td><a href="/recipe-users/{{recipe_user_id}}">Update</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</html>

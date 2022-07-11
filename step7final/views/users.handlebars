@@ -1,0 +1,48 @@
+<html>
+    <h1>Users</h1>
+    <br/>
+    <h3>Add a user:</h3>
+    <fieldset>
+        <legend>User Details</legend>
+        <form id="adduser" action="/users" method="post">
+            Username: <input type="text" name="username"><br>
+            Email: <input type="text" name="user_email"><br>
+            Bio: <input type="text" name="user_description"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </fieldset>
+    <h3>Search for a user:</h3>
+    <fieldset>
+        <legend>User Search</legend>
+        <form id="search_users" action="" method="">
+            <label> Search for a user: </label>
+            <input id='username_search_string' type='text' name='username_search_string' value='' placeholder="Username"><br>
+            <input type="button" value="Search" onclick="searchUsersByUsername()">
+        </form>
+    </fieldset>
+    <br/>
+
+    <h3>Current Users:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Bio</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <td>{{username}}</td>
+                <td>{{user_email}}</td>
+                <td>{{user_description}}</td>
+                <td><button onclick="deleteUser('{{username}}')">Delete</button></td>
+                <td><a href="/users/{{username}}">Update</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</html>

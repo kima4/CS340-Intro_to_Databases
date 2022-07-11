@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h1>Ingredients</h1>
+        <br/>
+        <h3>Update an ingredient:</h3>
+        <fieldset>
+            <legend>Ingredient Details</legend>
+            <form id="update-ingredient" action="/ingredients" method="put">
+                Ingredient Name: <input type="text" name="ingredient_name" value="{{ingredient.ingredient_name}}"><br><br>
+                Ingredient Category: <input type="text" name="ingredient_category" value="{{ingredient.ingredient_category}}"><br><br>
+                <button onclick="updateIngredient({{ingredient.ingredient_id}})">Update</button>
+            </form>
+        </fieldset>
+    </body>
+</html>

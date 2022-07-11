@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h1>Users</h1>
+        <br/>
+        <h3>Update a user:</h3>
+        <fieldset>
+            <legend>User Details</legend>
+            <form id="update-user" action="/users" method="put">
+                Email: <input type="text" name="user_email" value="{{user.user_email}}"><br><br>
+                Bio: <input type="text" name="user_description" value="{{user.user_description}}"><br><br>
+                <button onclick="updateUser('{{user.username}}')">Update</button>
+            </form>
+        </fieldset>
+    </body>
+</html>

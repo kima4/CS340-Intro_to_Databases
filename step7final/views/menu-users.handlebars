@@ -1,0 +1,52 @@
+<html>
+    <h1>Menus to Users Junction</h1>
+    <br/>
+    <h3>Add a menu review from a user:</h3>
+    <fieldset>
+        <legend>Menu User</legend>
+        <form id="addmenuuser" action="/menu-users" method="post">
+            Menu Name: <select name="menu_id">
+                {{#each menus}}
+                <option value="{{menu_id}}">{{menu_name}}</option>
+                {{/each}}
+            </select><br>
+            Username: <select name="username">
+                {{#each users}}
+                <option value="{{username}}">{{username}}</option>
+                {{/each}}
+            </select><br>
+            Rating: <input type="number" name="menu_user_rating"><br>
+            Comment: <input type="text" name="menu_user_comment"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </fieldset>
+    <br/>
+
+    <h3>Current menu reviews by users:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Menu</th>
+                <th>User</th>
+                <th>Rating</th>
+                <th>Comments</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each menuusers}}
+            <tr>
+                <td>{{menu_user_id}}</td>
+                <td>{{menu_name}}</td>
+                <td>{{username}}</td>
+                <td>{{menu_user_rating}}</td>
+                <td>{{menu_user_comment}}</td>
+                <td><button onclick="deleteMenuUser({{menu_user_id}})">Delete</button></td>
+                <td><a href="/menu-users/{{menu_user_id}}">Update</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</html>

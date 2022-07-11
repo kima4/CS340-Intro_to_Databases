@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <h1>Recipes</h1>
+        <br/>
+        <h3>Update a recipe:</h3>
+        <fieldset>
+            <legend>Recipe Details</legend>
+            <form id="update-recipe" action="/recipes" method="put">
+                Recipe Name: <input type="text" name="recipe_name" value="{{recipe.recipe_name}}"><br><br>
+                Recipe Description: <input type="text" name="recipe_description" value="{{recipe.recipe_description}}"><br><br>
+                Creator Name: <select name="recipe_creator" id="username-selector">
+                    {{#each users}}
+                    <option value="{{username}}">{{username}}</option>
+                    {{/each}}
+                    </select><br><br>
+                <button onclick="updateRecipe({{recipe.recipe_id}})">Update</button>
+            </form>
+            <script defer>selectUser({{recipe.recipe_creator}});</script>
+        </fieldset>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <h1>Recipes to Ingredients Junction</h1>
+        <br/>
+        <h3>Update a recipe-ingredient relationship:</h3>
+        <fieldset>
+            <legend>Recipe Ingredient</legend>
+            <form id="update-recipe-ingredient" action="/recipe-ingredients" method="put">
+                Ingredient Amount: <input type="text" name="ingredient_amount" value="{{recipe_ingredient.ingredient_amount}}"><br><br>
+                Recipe Step: <input type="number" name="recipe_step" value="{{recipe_ingredient.recipe_step}}"><br><br>
+                Recipe Action: <input type="text" name="recipe_action" value="{{recipe_ingredient.recipe_action}}"><br><br>
+                <button onclick="updateRecipeIngredient({{recipe_ingredient.recipe_ingredient_id}})">Update</button>
+            </form>
+        </fieldset>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+    <h1>Recipes to Ingredients Junction</h1>
+    <br/>
+    <h3>Add an ingredient to a recipe:</h3>
+    <fieldset>
+        <legend>Recipe Ingredient</legend>
+        <form id="addrecipeingredient" action="/recipe-ingredients" method="post">
+            Recipe Name: <select name="recipe_id">
+                {{#each recipes}}
+                <option value="{{recipe_id}}">{{recipe_name}}</option>
+                {{/each}}
+            </select><br>
+            Ingredient Name: <select name="ingredient_id">
+                {{#each ingredients}}
+                <option value="{{ingredient_id}}">{{ingredient_name}}</option>
+                {{/each}}
+            </select><br>
+            Ingredient Amount: <input type="text" name="ingredient_amount"><br>
+            Recipe Step: <input type="number" name="recipe_step"><br>
+            Recipe Action: <input type="text" name="recipe_action"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </fieldset>
+    <br/>
+
+    <h3>Current ingredients in recipes:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Recipe</th>
+                <th>Ingredient</th>
+                <th>Ingredient Amount</th>
+                <th>Recipe Step Number</th>
+                <th>Recipe Action</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each recipeingredients}}
+            <tr>
+                <td>{{recipe_ingredient_id}}</td>
+                <td>{{recipe_name}}</td>
+                <td>{{ingredient_name}}</td>
+                <td>{{ingredient_amount}}</td>
+                <td>{{recipe_step}}</td>
+                <td>{{recipe_action}}</td>
+                <td><button onclick="deleteRecipeIngredient({{recipe_ingredient_id}})">Delete</button></td>
+                <td><a href="/recipe-ingredients/{{recipe_ingredient_id}}">Update</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</html>

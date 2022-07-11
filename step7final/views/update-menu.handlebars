@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h1>Menus</h1>
+        <br/>
+        <h3>Update a menu</h3>
+        <fieldset>
+            <legend>Menu Details</legend>
+            <form id="update-menu" action="/menus" method="put">
+                Menu Name: <input type="text" name="menu_name" value="{{menu.menu_name}}"><br><br>
+                Menu Description: <input type="text" name="menu_description" value="{{menu.menu_description}}"><br><br>
+                Creator Name: <select name="menu_creator" id="username-selector">
+                    {{#each users}}
+                    <option value="{{username}}">{{username}}</option>
+                    {{/each}}
+                    </select><br><br>
+                <button onclick="updateMenu({{menu.menu_id}})">Update</button>
+            </form>
+        </fieldset>
+    </body>
+</html>

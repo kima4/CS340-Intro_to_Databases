@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h1>Recipes to Users Junction</h1>
+        <br/>
+        <h3>Update a recipe-user relationship:</h3>
+        <fieldset>
+            <legend>Recipe User</legend>
+            <form id="update-recipe-user" action="/recipe-users" method="put">
+                Rating: <input type="number" name="recipe_user_rating" value="{{recipe_user.recipe_user_rating}}"><br><br>
+                Comment: <input type="text" name="recipe_user_comment" value="{{recipe_user.recipe_user_comment}}"><br><br>
+                <button onclick="updateRecipeUser({{recipe_user.recipe_user_id}})">Update</button>
+            </form>
+        </fieldset>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h1>Menus to Users Junction</h1>
+        <br/>
+        <h3>Update a menu-user relationship:</h3>
+        <fieldset>
+            <legend>Menu User</legend>
+            <form id="update-menu-user" action="/menu-users" method="put">
+                Rating: <input type="number" name="menu_user_rating" value="{{menu_user.menu_user_rating}}"><br><br>
+                Comment: <input type="text" name="menu_user_comment" value="{{menu_user.menu_user_comment}}"><br><br>
+                <button onclick="updateMenuUser({{menu_user.menu_user_id}})">Update</button>
+            </form>
+        </fieldset>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+    <h1>Menus</h1>
+    <br/>
+    <h3>Add a menu:</h3>
+    <fieldset>
+        <legend>Menu Details</legend>
+        <form id="addmenu" action="/menus" method="post">
+            Menu Name: <input type="text" name="menu_name"><br>
+            Menu Description: <input type="text" name="menu_description"><br>
+            Creator Name: <select name="menu_creator">
+                <option value=''>&lt;Post anonymously&gt;</option>
+                {{#each users}}
+                <option value="{{username}}">{{username}}</option>
+                {{/each}}
+            </select><br>
+            <input type="submit" value="Submit">
+        </form>
+    </fieldset>
+    <h3>Search for a menu:</h3>
+    <fieldset>
+        <legend>Menu Search</legend>
+        <form id="search_menus" action="" method="">
+            <label> Search for a menu: </label>
+            <input id='menu_name_search_string' type='text' name='menu_name_search_string' value='' placeholder="Menu Name"><br>
+            <input type="button" value="Search" onclick="searchMenusByMenuName()">
+        </form>
+    </fieldset>
+    <br/>
+
+    <h3>Current Menus:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Menu ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Creator Username</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each menus}}
+            <tr>
+                <td>{{menu_id}}</td>
+                <td>{{menu_name}}</td>
+                <td>{{menu_description}}</td>
+                <td>{{menu_creator}}</td>
+                <td><button onclick="deleteMenu({{menu_id}})">Delete</button></td>
+                <td><a href="/menus/{{menu_id}}">Update</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</html>

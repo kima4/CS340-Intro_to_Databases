@@ -1,0 +1,57 @@
+<html>
+    <body>
+        <h1>Recipes</h1>
+        <br/>
+        <h3>Add a recipe:</h3>
+        <fieldset>
+            <legend>Recipe Details</legend>
+            <form id="addrecipe" action="/recipes" method="post">
+                Recipe Name: <input type="text" name="recipe_name"><br>
+                Recipe Description: <input type="text" name="recipe_description"><br>
+                Creator Name: <select name="recipe_creator">
+                    <option value=''>&lt;Post anonymously&gt;</option>
+                    {{#each users}}
+                    <option value="{{username}}">{{username}}</option>
+                    {{/each}}
+                </select><br>
+                <input type="submit" value="Submit">
+            </form>
+        </fieldset>
+        <h3>Search for a recipe:</h3>
+        <fieldset>
+            <legend>Recipe Search</legend>
+            <form id="search_recipes" action="" method="">
+                <label> Search for a recipe: </label>
+                <input id='recipe_name_search_string' type='text' name='recipe_name_search_string' value='' placeholder="Recipe Name"><br>
+                <input type="button" value="Search" onclick="searchRecipesByRecipeName()">
+            </form>
+        </fieldset>
+        <br/>
+
+        <h3>Current Recipes:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Recipe ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Creator Username</th>
+                    <th>Delete</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each recipes}}
+                <tr>
+                    <td>{{recipe_id}}</td>
+                    <td>{{recipe_name}}</td>
+                    <td>{{recipe_description}}</td>
+                    <td>{{recipe_creator}}</td>
+                    <td><button onclick="deleteRecipe({{recipe_id}})">Delete</button></td>
+                    <td><a href="/recipes/{{recipe_id}}">Update</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </body>
+</html>
